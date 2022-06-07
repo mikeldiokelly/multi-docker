@@ -22,3 +22,15 @@ after_success:
   - docker push okellym2/multi-nginx
   - docker push okellym2/multi-server
   - docker push okellym2/multi-worker
+
+deploy:
+  region: 'eu-west-1'
+  app: 'multi-docker'
+  env: 'Multidocker-env'
+  bucket_name: elasticbeanstalk-eu-west-1-382079606667Info
+  bucket_path: docker-multi
+  on:
+    branch: master
+
+  access:key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
